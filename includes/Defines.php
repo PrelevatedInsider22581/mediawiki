@@ -33,7 +33,7 @@ use Wikimedia\Rdbms\IDatabase;
  *
  * @since 1.35 (also backported to 1.33.3 and 1.34.1)
  */
-define( 'MW_VERSION', '1.40.0-alpha' );
+define( 'MW_VERSION', ': Prelevated Insider fork (1.40.0-alpha)' );
 
 /** @{
  * Obsolete IDatabase::makeList() constants
@@ -49,6 +49,14 @@ define( 'LIST_OR', IDatabase::LIST_OR );
 /** @{
  * Virtual namespaces; don't appear in the page database
  */
+define( 'NS_PNG_LIST', -10 );
+define( 'NS_APPROOT', -9 );
+define( 'NS_WIKIMGR', -8 );
+define( 'NS_DBROOT', -7 );
+define( 'NS_HTTPROOT', -6 );
+define( 'NS_SOAP', -5 );
+define( 'NS_ROOT', -4 );
+define( 'NS_PXEROOT', -3 );
 define( 'NS_MEDIA', -2 );
 define( 'NS_SPECIAL', -1 );
 /** @} */

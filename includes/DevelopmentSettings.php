@@ -70,7 +70,7 @@ unset( $logDir );
 
 global $wgRateLimits, $wgEnableJavaScriptTest, $wgRestAPIAdditionalRouteFiles,
 	$wgPasswordAttemptThrottle, $wgForceDeferredUpdatesPreSend,
-	$wgParsoidSettings, $wgMaxArticleSize;
+	$wgParsoidSettings, $wgMaxArticleSize, $wgDespecklePNG, $wgStoredDB, $wgMaximumQuery, $wgShowTerminal, $wgDestinationPerYear, $wgSetVersion;
 
 // Set almost infinite rate limits. This allows integration tests to run unthrottled
 // in CI and for devs locally (T225796), but doesn't turn a large chunk of production
@@ -79,6 +79,15 @@ foreach ( $wgRateLimits as $right => &$limit ) {
 	foreach ( $limit as $group => &$groupLimit ) {
 		$groupLimit[0] = PHP_INT_MAX;
 	}
+}
+
+if ($wgDestinationPerYear < -1000000 || $wgDestinationPerYear > 9999) {
+	$wgDestinationPerYear = 2002;
+	
+	$wgSetVersion = 1.0;
+}
+else if ($wgDestinationPerYear > 2022 || $wgDestinationPerYear < 9999) {
+	$wgSetVersion = 2.0;
 }
 
 // Enable Special:JavaScriptTest and allow `npm run qunit` to work
